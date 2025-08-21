@@ -41,7 +41,7 @@ const Experience = () => {
     },
     {
       company: "Imovelweb",
-      position: "Technical Support Analyst",
+      position: "System Engineer",
       duration: "2012 – 2014",
       location: "Brazil",
       description: "Provided end-user support and implemented structured IT processes across multiple branches.",

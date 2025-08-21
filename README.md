@@ -141,7 +141,7 @@ npm run build
 ### Experience Section
 - GE Healthcare (2016-2024) - System Engineer
 - UOL (2015-2018) - System Administrator
-- Imovelweb (2012-2014) - Technical Support Analyst
+- Imovelweb (2012-2014) - System Engineer
 - Butantan Institute (2010-2011) - Infrastructure Support
 - Consulters Group (2008-2010) - Technical Support
 
