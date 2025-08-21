@@ -151,7 +151,7 @@ npm run build
 3. **Medical Systems Integration & Interoperability Platform**
 
 ### Contact Information
-- Email: ivan.amaro@email.com
+- Email: ivan@ivanamaro.com.au
 - Phone: +61 0412 452 565
 - LinkedIn: linkedin.com/in/devopsivanamaro
 - Location: Brisbane, QLD, Australia

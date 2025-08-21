@@ -46,8 +46,8 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       label: "Email",
-      value: "ivan.amaro@email.com",
-      link: "mailto:ivan.amaro@email.com"
+      value: "ivan@ivanamaro.com.au",
+      link: "mailto:ivan@ivanamaro.com.au"
     },
     {
       icon: <FaPhone />,

@@ -65,7 +65,7 @@ const Header = () => {
               <div className="hero-contact">
                 <div className="contact-item">
                   <FaEnvelope />
-                  <span>ivan.amaro@email.com</span>
+                  <span>ivan@ivanamaro.com.au</span>
                 </div>
                 <div className="contact-item">
                   <FaPhone />
