@@ -122,6 +122,21 @@ npm run build
 - **GitHub Pages**: Use `gh-pages` package
 - **AWS S3**: Upload the `build` folder to an S3 bucket
 
+## ✉️ Contact Form Setup (Formspree or Getform)
+
+1. Create a form in Formspree or Getform and set the recipient to `ivan@ivanamaro.com.au`.
+2. Copy the endpoint URL (e.g., `https://formspree.io/f/xxxxxxx` or `https://getform.io/f/xxxxxxx`).
+3. Create a `.env` (or `.env.local`) file in the project root based on `.env.example` and add:
+   ```bash
+   REACT_APP_FORMS_ENDPOINT=https://formspree.io/f/xdkdrrjy
+   ```
+4. Restart the dev server: `npm start`.
+5. Submit the contact form to test; messages will be sent to your configured email.
+
+Notes:
+- If the endpoint is not set, the form will show an error message when submitting.
+- This works on any hosting provider. If you deploy on Netlify and prefer Netlify Forms, the form can be adapted.
+
 ## 📄 Content Overview
 
 ### About Section

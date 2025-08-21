@@ -11,6 +11,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const formsEndpoint = process.env.REACT_APP_FORMS_ENDPOINT;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,23 +24,41 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitStatus(null);
+
+    if (!formsEndpoint) {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      setSubmitStatus('error');
+      return;
+    }
+
+    try {
+      const response = await fetch(formsEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
       });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 3000);
-    }, 1500);
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 4000);
+    }
   };
 
   const contactInfo = [
@@ -188,10 +207,14 @@ const Contact = () => {
                   </>
                 )}
               </button>
-
               {submitStatus === 'success' && (
                 <div className="success-message">
                   Thank you! Your message has been sent successfully. I'll get back to you soon!
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="error-message">
+                  There was an issue sending your message. Please try again later.
                 </div>
               )}
             </form>
