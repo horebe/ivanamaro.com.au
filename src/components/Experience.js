@@ -13,7 +13,6 @@ const Experience = () => {
       location: "Latin America",
       description: "Technical team lead responsible for escalated incidents and cloud adoption initiatives.",
       achievements: [
-        "Led a team of 11 technicians across LATAM handling escalated incidents",
         "Reduced case volume by 68% through root cause analysis and continuous process improvement",
         "Managed databases (Oracle, MySQL, SQL Server, Sybase) and IT infrastructure solutions",
         "Defined and tracked team KPIs and ensured SLA adherence",
