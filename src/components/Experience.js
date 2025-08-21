@@ -11,7 +11,7 @@ const Experience = () => {
       position: "System Engineer",
       duration: "2016 – 2024",
       location: "Latin America",
-      description: "Technical team lead responsible for escalated incidents and cloud adoption initiatives.",
+      description: "Worked on escalated incident resolution, infrastructure support, and cloud migration initiatives.",
       achievements: [
         "Reduced case volume by 68% through root cause analysis and continuous process improvement",
         "Managed databases (Oracle, MySQL, SQL Server, Sybase) and IT infrastructure solutions",
