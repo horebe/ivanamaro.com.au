@@ -24,7 +24,7 @@ const Experience = () => {
     },
     {
       company: "UOL",
-      position: "System Administrator – Ecommerce",
+      position: "System Engineer – Ecommerce",
       duration: "2015 – 2018",
       location: "Brazil",
       description: "Managed UOL's e-commerce and payment gateway infrastructure comprising 10,000+ servers.",
