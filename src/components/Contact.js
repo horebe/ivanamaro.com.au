@@ -11,6 +11,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitError, setSubmitError] = useState('');
   const formsEndpoint = process.env.REACT_APP_FORMS_ENDPOINT;
 
   const handleInputChange = (e) => {
@@ -25,26 +26,26 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setSubmitError('');
 
     if (!formsEndpoint) {
       setIsSubmitting(false);
       setSubmitStatus('error');
+      setSubmitError('Form endpoint is not configured.');
       return;
     }
 
     try {
+      const body = new FormData();
+      body.append('name', formData.name);
+      body.append('email', formData.email);
+      body.append('subject', formData.subject);
+      body.append('message', formData.message);
+
       const response = await fetch(formsEndpoint, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        })
+        headers: { 'Accept': 'application/json' },
+        body
       });
 
       if (response.ok) {
@@ -52,9 +53,17 @@ const Contact = () => {
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         setSubmitStatus('error');
+        try {
+          const err = await response.json();
+          const msg = Array.isArray(err.errors) ? err.errors.map(e => e.message).join(', ') : (err.message || '');
+          if (msg) setSubmitError(msg);
+        } catch (_) {
+          // ignore JSON parse errors
+        }
       }
     } catch (error) {
       setSubmitStatus('error');
+      setSubmitError('Network error. Please check your connection.');
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus(null), 4000);
@@ -214,7 +223,7 @@ const Contact = () => {
               )}
               {submitStatus === 'error' && (
                 <div className="error-message">
-                  There was an issue sending your message. Please try again later.
+                  There was an issue sending your message. {submitError || 'Please try again later.'}
                 </div>
               )}
             </form>
